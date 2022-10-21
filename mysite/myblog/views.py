@@ -8,3 +8,4 @@ class IrasasListView(generic.ListView):
     model = Irasas
     template_name = "irasai.html"
     context_object_name = "irasai"
+    paginate_by = 5
