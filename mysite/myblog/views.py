@@ -9,3 +9,9 @@ class IrasasListView(generic.ListView):
     template_name = "irasai.html"
     context_object_name = "irasai"
     paginate_by = 5
+
+
+class IrasasDetailView(generic.DetailView):
+    model = Irasas
+    template_name = 'irasas.html'
+    context_object_name = 'irasas'

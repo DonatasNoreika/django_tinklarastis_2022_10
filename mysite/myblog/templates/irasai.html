@@ -15,7 +15,7 @@
         <h2><a class="article-title">{{ irasas.pavadinimas }}</a></h2>
         <p class="article-content">{{ irasas.tekstas|safe|truncatewords:"20"|linebreaks }}</p>
         <p class="card-text">
-            <a href="">Skaityti daugiau</a>
+            <a href="{{ irasas.id }}">Skaityti daugiau</a>
         </p>
     </div>
 </article>
