@@ -9,9 +9,14 @@ class Irasas(models.Model):
     tekstas = HTMLField("Tekstas")
     data = models.DateTimeField("Data", auto_now_add=True)
 
+    def komentaru_skaicius(self):
+        komentarai = Komentaras.objects.filter(irasas=self.pk)
+        return len(komentarai)
+
     class Meta:
         verbose_name = 'Irašas'
         verbose_name_plural = 'Irašai'
+        ordering = ['-data']
 
     def __str__(self):
         return f"{self.autorius} - {self.pavadinimas} ({self.data})"
