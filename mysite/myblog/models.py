@@ -22,7 +22,7 @@ class Irasas(models.Model):
         return f"{self.autorius} - {self.pavadinimas} ({self.data})"
 
 class Komentaras(models.Model):
-    irasas = models.ForeignKey('Irasas', on_delete=models.CASCADE, related_name="komentarai")
+    irasas = models.ForeignKey('Irasas', on_delete=models.CASCADE, related_name="komentarai", null=True, blank=True)
     autorius = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     tekstas = models.TextField("Tekstas", max_length=5000)
     data = models.DateTimeField("Data", auto_now_add=True)
