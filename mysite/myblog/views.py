@@ -41,3 +41,14 @@ class IrasasUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateVi
     def test_func(self):
         irasas = self.get_object()
         return irasas.autorius == self.request.user
+
+
+class IrasasDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
+    model = Irasas
+    success_url = '/irasai/'
+    template_name = "irasas_delete.html"
+    context_object_name = 'irasas'
+
+    def test_func(self):
+        irasas = self.get_object()
+        return irasas.autorius == self.request.user
