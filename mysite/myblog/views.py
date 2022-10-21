@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 from .models import Irasas, Komentaras
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 # Create your views here.
 
@@ -27,3 +27,17 @@ class IrasasCreateView(LoginRequiredMixin, generic.CreateView):
     def form_valid(self, form):
         form.instance.autorius = self.request.user
         return super().form_valid(form)
+
+class IrasasUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
+    model = Irasas
+    fields = ['pavadinimas', 'tekstas']
+    success_url = '/irasai/'
+    template_name = 'irasas_form.html'
+
+    def form_valid(self, form):
+        form.instance.autorius = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        irasas = self.get_object()
+        return irasas.autorius == self.request.user

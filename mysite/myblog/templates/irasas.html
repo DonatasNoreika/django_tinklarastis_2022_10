@@ -8,8 +8,13 @@
         <div class="article-metadata">
             <a class="mr-2">{{ irasas.autorius }}</a>
             <small class="text-muted">{{ irasas.data|date:"Y-m-d, f" }}</small>
-        </div>
         <h2><a class="article-title">{{ irasas.pavadinimas }}</a></h2>
+        </div>
+        {% if irasas.autorius == user %}
+        <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'irasas_update' irasas.id %}">Redaguoti</a>
+        </div>
+        {% endif %}
         <p class="article-content">{{ irasas.tekstas|safe }}</p>
     </div>
 </article>
