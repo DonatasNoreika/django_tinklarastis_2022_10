@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Įrašai{% endblock %}
+
+{% block content %}
+{% for irasas in irasai %}
+{{ irasas }}
+{% endfor %}
+{% endblock %}
