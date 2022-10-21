@@ -16,7 +16,7 @@ class Irasas(models.Model):
     class Meta:
         verbose_name = 'Irašas'
         verbose_name_plural = 'Irašai'
-        ordering = ['-data']
+        ordering = ['data']
 
     def __str__(self):
         return f"{self.autorius} - {self.pavadinimas} ({self.data})"

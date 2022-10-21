@@ -20,6 +20,17 @@
         <p class="article-content">{{ irasas.tekstas|safe }}</p>
     </div>
 </article>
+  {% if user.is_authenticated %}
+  <div class="fieldWrapper">
+    <hr><br/>
+    <h4>Palikite komentarą:</h4>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.tekstas }}</br>
+      <input type="submit" value="Paskelbti">
+    </form>
+  </div>
+  {% endif %}
 <hr>
 <h6>Komentarai:</h6>
 {% for komentaras in irasas.komentarai.all %}
