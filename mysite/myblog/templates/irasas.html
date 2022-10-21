@@ -13,5 +13,13 @@
         <p class="article-content">{{ irasas.tekstas|safe }}</p>
     </div>
 </article>
-
+<hr>
+<h6>Komentarai:</h6>
+{% for komentaras in irasas.komentarai.all %}
+<div>
+    <a class="mr-2">{{ komentaras.autorius }}</a>
+    <small class="text-muted">{{ komentaras.data|date:"Y-m-d, f" }}</small>
+    <p>{{ komentaras.tekstas }}</p>
+</div>
+{% endfor %}
 {% endblock %}
